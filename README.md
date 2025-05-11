@@ -1,1 +1,0 @@
-# CrediKhaata-Loan-Tracker-for-Shopkeepers
