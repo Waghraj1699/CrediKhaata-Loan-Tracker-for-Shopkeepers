@@ -15,8 +15,12 @@
 - **Express.js**: Web framework for Node.js.
 - **MongoDB**: NoSQL database for storing application data.
 - **Mongoose**: ODM for MongoDB and Node.js.
-- **Nodemailer**: Module for sending emails from Node.js applications.
 - **dotenv**: Module to load environment variables from a `.env` file.
+- **jsonwebtoken**: Secure authentication using JWT.
+- **moment**: Date manupulation for loan scheduling.
+- **cron**: Scheduled auto-tagging of overdue loans.
+- **twilio**: SMS notification for loan repayment.
+- **pdfkit**: PDF generation for repayment receipts. 
 
 ## 📦 Installation
 
@@ -40,46 +44,47 @@
    ```env
    PORT=3000
    MONGODB_URI=your_mongodb_connection_string
-   EMAIL_USER=your_email@example.com
-   EMAIL_PASS=your_email_password
    ```
 
 4. **Start the server**:
 
    ```bash
-   npm start
+   node server.js
    ```
 
    The server will start on `http://localhost:3000`.
 
 ## 📚 API Endpoints
 
+### Authentication
+- **POST /auth/register**: Register a new user.
+- **POST /auth/login**: Authenticate a user and return a token.
+
 ### Customers
 
-- **GET /customers**: Retrieve all customers.
-- **GET /customers/:id**: Retrieve a customer by ID.
-- **POST /customers**: Add a new customer.
-- **PUT /customers/:id**: Update customer details.
-- **DELETE /customers/:id**: Delete a customer.
+- **GET /get**: Retrieve all customers.
+- **POST /create**: Add a new customer.
+- **PUT /update/:id**: Update customer details.
+- **DELETE /delete/:id**: Delete a customer.
 
 ### Loans
 
-- **GET /loans**: Retrieve all loans.
-- **GET /loans/:id**: Retrieve a loan by ID.
-- **POST /loans**: Add a new loan.
-- **PUT /loans/:id**: Update loan details.
-- **DELETE /loans/:id**: Delete a loan.
+- **GET /fetch**: Retrieve all loans.
+- **POST /credit**: Add a new loan.
 
 ### Repayments
 
-- **GET /repayments**: Retrieve all repayments.
-- **GET /repayments/:id**: Retrieve a repayment by ID.
-- **POST /repayments**: Add a new repayment.
-- **PUT /repayments/:id**: Update repayment details.
-- **DELETE /repayments/:id**: Delete a repayment.
+- **POST /repayment**: Add a new repayment.
 
+### Summary
+
+- **GET /**: Generate a report of all loans.
+
+### Overdue loans 
+
+- **GET /loans**: Retrive all overdue loans
+  
 ## 📌 Notes
 
 - Ensure MongoDB is running and accessible via the connection string provided in the `.env` file.
-- The application uses Nodemailer for sending email reminders. Configure `EMAIL_USER` and `EMAIL_PASS` in the `.env` file with valid credentials.
 - Scheduled tasks for sending reminders are set up using Node.js cron jobs.
