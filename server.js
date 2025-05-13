@@ -42,6 +42,9 @@ app.use('/api/overdue', overdueRoutes)
 app.use('/api/summary', summaryRoutes)
 app.use('/api/webhook', repaymentRoutes)
 
+app.use("/",(req, res) => {
+    res.json({message: "Hello CrediKhata"})
+})
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

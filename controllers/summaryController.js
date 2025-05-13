@@ -7,7 +7,7 @@ const getLoanSummary = async (req, res) => {
         console.log("Fetching loan summary...");
 
         // Get all loans that are not yet paid
-        const loans = await Loan.find({user: req.userId,status: { $ne: "paid" } }).lean();
+        const loans = await Loan.find({user: req.userId ,status: { $ne: "paid" } }).lean();
         console.log("Loans Found:", loans.length);
 
         // Extract loan IDs of this user
